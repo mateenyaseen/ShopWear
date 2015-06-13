@@ -98,13 +98,14 @@
                                         <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
                                     </span>
                                 </h4>
-               
+                              @if(latest.Count > 8)
+                              { 
                             <div id="myCarousel" class="myCarousel carousel slide">
                                 <div class="carousel-inner">                                                              
                                         <div class="active item">
                                             <ul class="thumbnails">
 
-                                                                                      
+                                                                                        
                                                         <li class="span3">
                                                             <div class="product-box">
                                                                 @{string url = "~/Files/" + latest.ElementAt(0).Id +"0"+ ".jpg"; }
@@ -143,7 +144,7 @@
                                                 </li>        
                                                  
                                             </ul>
-                                        </div>
+                                              </div>
                               
                                     <div class="item">
                                         <ul class="thumbnails">
@@ -185,12 +186,13 @@
                                                     <p class="price"> @latest.ElementAt(7).price</p>
                                                 </div>
                                             </li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                             
                         </div>  
-                      </div>
+                              } </div>
                     </div>
                     <br />
                     <div class="row">
@@ -201,6 +203,8 @@
                                     <a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
                                 </span>
                             </h4>
+                            @if(latest.Count > 8)
+                              {
                             <div id="myCarousel-2" class="myCarousel carousel slide">
                                 <div class="carousel-inner">
                                     <div class="active item">
@@ -291,7 +295,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            }</div>
                     </div>
                     <br />
                     
