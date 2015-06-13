@@ -121,6 +121,8 @@
                     <div class="block">
                         <ul class="nav nav-list">
                             <li class="nav-header" style="color:#e90000"><h3>CATEGORIES</h3><br /></li>
+                            @if(c.Count != 0)
+                            { 
                             @foreach (Category g in c)
                             {
                                 <li>
@@ -132,12 +134,14 @@
                                     </h4>
                                 </li>
                             }
-
+                            }
                         </ul>
 
                         <ul class="nav nav-list">
                             <li class="nav-header" style="color:#e90000; "><h3>Brands</h3><br /></li>
-                            @foreach (Brand g in br)
+                           @if(br.Count != 0)
+                           { 
+                            foreach (Brand g in br)
                             {
                                 <li>
                                     <h4>
@@ -147,6 +151,7 @@
 
                                     </h4>
                                 </li>
+                            }
                             }
 
                         </ul>

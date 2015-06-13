@@ -162,11 +162,13 @@
                                   <label for="sel1">Select Category (select one):</label>
                                   <select class="form-control" name="brandID" id="CategorySelector">
                                       <option value="0">Select All</option>
-                                      @foreach (Category b in c)
+                                      @if(c.Count !=  0)
+                                      { 
+                                      foreach (Category b in c)
                                       {
                                           <option value=@b.Id>@b.name</option>
                                       }
-                                     
+                                      }
 
                                   </select>
                               </div>
@@ -175,12 +177,15 @@
                                   <label for="sel1">Select Subcategory (select one):</label>
                                   <select class="form-control" id="SubCategorySelector">
                                       <option value="0">Select All</option>
-                                      @foreach (Subcategory temp in sc)
+                                      @if(sc.Count != 0 )
+                                      { 
+                                      foreach (Subcategory temp in sc)
                                       {
                                           if (temp.categoryId == c[0].Id)
                                           {
                                               <option value=@temp.Id>@temp.name</option>
                                           }
+                                      }
                                       }
 
 
@@ -191,9 +196,12 @@
                                   <label for="sel1">Select Brand (select one):</label>
                                   <select class="form-control" name="brandID" id="BrandSelector">
                                       <option value="0">Select All</option>
-                                      @foreach (Brand b in br)
+                                      @if( br.Count != 0)
+                                      { 
+                                      foreach (Brand b in br)
                                       {
                                           <option value=@b.Id>@b.name</option>
+                                      }
                                       }
 
                                   </select>
@@ -211,7 +219,9 @@
                         
                             <ul class="nav nav-list">
                             <li class="nav-header" style="color:#e90000; "><h3>Categories</h3><br /></li>
-                            @foreach(Category g in c)
+                        @if( c.Count != 0 )
+                        { 
+                            foreach(Category g in c)
                             { 
                                
                             <li>
@@ -223,12 +233,15 @@
                                 </h4>
                             </li>
                             }
+                        }
 
                         </ul>
 
                         <ul class="nav nav-list">
                             <li class="nav-header" style="color:#e90000; "><h3>Brands</h3><br /></li>
-                            @foreach (Brand g in br)
+                        @if( c.Count != 0 )
+                        {
+                            foreach (Brand g in br)
                             {
                                 <li>
                                     <h4>
@@ -239,7 +252,7 @@
                                     </h4>
                                 </li>
                             }
-
+                            }
                         </ul>
                     </div>
                 </div>

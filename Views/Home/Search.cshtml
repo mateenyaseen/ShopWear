@@ -134,7 +134,9 @@
                                 </form>
                             </div><ul class="nav nav-list">
                                 <li class="nav-header" style="color:#e90000"><h3>CATEGORIES</h3><br /></li>
-                                @foreach (Category g in c)
+                              @if(c.Count != 0)
+                              { 
+                                foreach (Category g in c)
                                 {
                                     <li>
                                         <h4>
@@ -145,7 +147,7 @@
                                         </h4>
                                     </li>
                                 }
-
+                              }
                             </ul>
                         </div>
                     </div>

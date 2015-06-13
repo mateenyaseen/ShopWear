@@ -113,7 +113,9 @@
                             <a href=" ">Category</a>
                             <ul>
 
-                                @foreach (Category temp in c)
+                                @if(c.Count != 0 )
+                                { 
+                                foreach (Category temp in c)
                                 {
                                     <li >
                                         @{string url = "~/Items/ShowCategory/" + temp.Id; }
@@ -136,7 +138,7 @@
                                         </ul>
                                     </li>
                                 }
-
+                                }
 
                             </ul>
 
@@ -146,7 +148,9 @@
 
                             <ul>
 
-                                @foreach (Brand temp in br)
+                                @if(br.Count != 0 )
+                                { 
+                                foreach (Brand temp in br)
                                 {
                                     <li>
                                         @{string url = "~/Items/ShowBrand/" + temp.Id; }
@@ -155,7 +159,7 @@
 
                                     </li>
                                 }
-
+                                }
 
                             </ul>
 
