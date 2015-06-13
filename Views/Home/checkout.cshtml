@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using project.Models
+@{     User user = (User)HttpContext.Current.Session["user"]; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/themes/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+    <script src="~/Content/themes/jquery.fancybox.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+
+
+
+
+
+
+
+    <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+    <div id="wrapper" class="container">
+
+        <section class="header_text sub">
+            
+            <h4><span>Check Out</span></h4>
+        </section>
+        <section class="main-content">
+            <div class="row">
+                <div class="span12">
+                    <div class="accordion" id="accordion2">
+
+
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">Confirm Order</a>
+                            </div>
+                            <div id="collapse3" class="accordion-body collapse">
+                                <div class="accordion-inner">
+                                    <div class="row-fluid">
+                                        @using (Html.BeginForm("confirmorder", "Home", FormMethod.Post))
+                                        {
+                                            
+                                        <div class="control-group">
+                                        
+
+                                            <label for="textarea" class="control-label">Comments</label>
+                                            <div class="controls">
+                                                <textarea name="com" rows="3" id="textarea" class="span12"></textarea>
+                                            </div>
+                                        
+                                        </div>
+                                        <button class="btn btn-inverse pull-right">Confirm order</button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Navigation</h4>
+                    <ul class="nav">
+                        <li><a href="./index.html">Homepage</a></li>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./contact.html">Contac Us</a></li>
+                        <li><a href="./cart.html">Your Cart</a></li>
+                        <li><a href="./register.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo" style=" font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:orange">Shop  Wear</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                    <br />
+                    <span class="social_icons">
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section id="copyright">
+            <span>Copyright 2013 Mateen yaseen.</span>
+        </section>
+    </div>
+
+    <script src="~/Content/common.js"></script>
+</body>
+</html>

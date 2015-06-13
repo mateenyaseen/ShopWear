@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "product_detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0; int j = 0;
+}
+@model project.Models.Product
+@using project.Models
+@{     User user = (User)HttpContext.Current.Session["user"];
+     dynamic mysub = ViewBag.mysubcat;
+}
+@{List<Category> c = ViewBag.cat; List<Subcategory> sc = ViewBag.subcat; List<Brand> br = ViewBag.brand; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/themes/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+    <script src="~/Content/themes/jquery.fancybox.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div id="wrapper" class="container">
+
+        <section class="header_text sub">
+            
+            <h4><span>Product Detail</span></h4>
+        </section>
+        <section class="main-content">
+            <div class="row">
+                <div class="span9">
+                    <div class="row">
+                        <div class="span4">
+                            @{string url = "~/Files/" + Model.Id +"0" + ".jpg"; }
+                            <a href=" " class="thumbnail" data-fancybox-group="group1" title="Description 1"><img alt="" src="@Url.Content(url)" /></a>
+
+                            <ul class="thumbnails small">
+                                <li class="span1">
+                                    <a href="" class="thumbnail" data-fancybox-group="group1" title="Description 2"><img src="@Url.Content(url)" alt=" "></a>
+                                </li>
+                                @{  url = "~/Files/" + Model.Id + "1" + ".jpg"; }
+                                <li class="span1">
+                                    <a href="" class="thumbnail" data-fancybox-group="group1" title="Description 3"><img src="@Url.Content(url)" alt=""></a>
+                                </li>
+                                @{url = "~/Files/" + Model.Id + "2" + ".jpg"; }
+                                <li class="span1">
+                                    <a href="" class="thumbnail" data-fancybox-group="group1" title="Description 4"><img src="@Url.Content(url)" alt=""></a>
+                                </li>
+                                @{url = "~/Files/" + Model.Id + "3" + ".jpg"; }
+
+                                <li class="span1">
+                                    <a href="" class="thumbnail" data-fancybox-group="group1" title="Description 5"><img src="@Url.Content(url)" alt=""></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="span5">
+                            <address>
+                                <strong>Brand:</strong> @Model.Brand.name <span></span><br>
+                                <strong>Description</strong>@Model.Desciption <span></span><br>
+
+                            </address>
+                            <h4><strong>Price: </strong>@Model.price</h4>
+                        </div>
+                        <div class="span5">
+                            <form class="form-inline" action="/Items/EnterInCart" method="post">
+                                <input type="number"min="1" name="quantity" class="span1" placeholder="1" />
+                                <input name="productId" type="hidden" value=@Model.Id />
+                                <button class="btn btn-inverse" type="submit">Add to cart</button>
+
+                            </form>
+                        </div>
+
+                        </div>
+                    </div>
+
+
+
+                        <div class="span3 col">
+                            <div class="block">
+                                <ul class="nav nav-list">
+                                    <li class="nav-header" style="color:#e90000"><h3>CATEGORIES</h3><br /></li>
+                                    @foreach (Category g in c)
+                                    {
+                                        <li>
+                                            <h4>
+                                                @{ url = "~/Items/ShowCategory/" + g.Id; }
+
+                                                <a class="Action" href="@Url.Content(url)"> @g.name</a>
+
+                                            </h4>
+                                        </li>
+                                    }
+
+                                </ul>
+                                <ul class="nav nav-list">
+                                    <li class="nav-header" style="color:#e90000; "><h3>Brands</h3><br /></li>
+                                    @foreach (Brand g in br)
+                                    {
+                                        <li>
+                                            <h4>
+                                                @{ url = "~/Items/ShowBrand/" + g.Id; }
+
+                                                <a class="Action" href="@Url.Content(url)"> @g.name</a>
+
+                                            </h4>
+                                        </li>
+                                    }
+
+                                </ul>
+                           
+                        </div>
+                    </div>
+                </div>
+
+        </section>
+
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Navigation</h4>
+                    <ul class="nav">
+                        <li><a href="./index.html">Homepage</a></li>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./contact.html">Contac Us</a></li>
+                        <li><a href="./cart.html">Your Cart</a></li>
+                        <li><a href="./register.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="span4">
+                    <h4>My Account</h4>
+                    <ul class="nav">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="span5">
+                    <p class="logo" style=" font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:orange">Shop  Wear</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                    <br />
+                    <span class="social_icons">
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
+                    </span>
+                </div>
+
+            </div>
+        </section>
+        <section id="copyright">
+            <span>Copyright Mateen yaseen.</span>
+        </section>
+    </div>
+    
+
+    <script>
+        $(function () {
+            $('#myTab a:first').tab('show');
+            $('#myTab a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            })
+        })
+        $(document).ready(function () {
+            $('.thumbnail').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+
+            $('#myCarousel-2').carousel({
+                interval: 2500
+            });
+        });
+    </script>
+
+    
+    <script src="~/Content/common.js"></script>
+</body>
+</html>

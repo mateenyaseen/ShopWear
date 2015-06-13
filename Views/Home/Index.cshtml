@@ -1,0 +1,405 @@
+﻿@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0; int j = 0; int k = 0; int s = 0;
+}
+@using project.Models
+@{     User user = (User)HttpContext.Current.Session["user"];
+       List<Product> latest = ViewBag.Latest;
+       List<Popular> pop = ViewBag.Popular;  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" /> 
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />   
+    
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+    
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+
+    <link href="~/Content/main.css" rel="stylesheet" />
+    
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+   
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background:url('../../Content/bg.png'); background-repeat:repeat;">
+
+    
+    
+
+    <div id="wrapper" class="container">
+
+
+        <!--   slider -->
+        <section class="homepage-slider" id="home-slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <img src="~/Content/others/Sl1.jpg" />
+
+                        <div class="intro">
+                            <h1>Mid season sale</h1>
+                            <p><span>Up to 50% Off</span></p>
+                            <p><span>On selected items online and in stores</span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="~/Content/others/Sl2.jpg" />
+
+                    </li>
+
+                    <li>
+                        <img src="~/Content/others/M8.jpg" />
+
+                    </li>
+                    <li>
+                        <img src="~/Content/others/M7.jpg" />
+
+
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!--   slider -->
+
+
+        <section class="header_text">
+            Fashion is a popular style or practice, especially in clothing, footwear, accessories, makeup, body piercing, or furniture.
+            <br />  Fashion is a distinctive and often habitual trend in the style in which a person dresses.
+        </section>
+        <section class="main-content">
+            <div class="row">
+                <div class="span12">
+                    <div class="row">
+                        <div class="span12">
+                                <h4 class="title">
+                                    <span class="pull-left"><span class="text"><span class="line"> Latest  <strong>Products</strong></span></span></span>
+                                    <span class="pull-right">
+                                        <a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+                                    </span>
+                                </h4>
+               
+                            <div id="myCarousel" class="myCarousel carousel slide">
+                                <div class="carousel-inner">                                                              
+                                        <div class="active item">
+                                            <ul class="thumbnails">
+
+                                                                                      
+                                                        <li class="span3">
+                                                            <div class="product-box">
+                                                                @{string url = "~/Files/" + latest.ElementAt(0).Id +"0"+ ".jpg"; }
+                                                                <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                                <a href=" " class="title"> @latest.ElementAt(0).name</a><br />
+                                                                <a href=" " class="category">@latest.ElementAt(0).Desciption </a>
+                                                                <p class="price"> @latest.ElementAt(0).price</p>
+                                                            </div>
+                                                        </li>   
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        @{ url = "~/Files/" + latest.ElementAt(1).Id + "0" + ".jpg"; }
+                                                        <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                        <a href=" " class="title"> @latest.ElementAt(1).name</a><br />
+                                                        <a href=" " class="category">@latest.ElementAt(1).Desciption </a>
+                                                        <p class="price"> @latest.ElementAt(1).price</p>
+                                                    </div>
+                                                </li> 
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        @{ url = "~/Files/" + latest.ElementAt(2).Id + "0" + ".jpg"; }
+                                                        <p><a href=" "><img src="@Url.Content(url)" /></a></p>
+                                                        <a href=" " class="title"> @latest.ElementAt(2).name</a><br />
+                                                        <a href=" " class="category">@latest.ElementAt(2).Desciption </a>
+                                                        <p class="price"> @latest.ElementAt(2).price</p>
+                                                    </div>
+                                                </li> 
+                                                <li class="span3">
+                                                    <div class="product-box">
+                                                        @{ url = "~/Files/" + latest.ElementAt(3).Id + "0" + ".jpg"; }
+                                                        <p><a href=" l"><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                        <a href=" " class="title"> @latest.ElementAt(3).name</a><br />
+                                                        <a href=" " class="category">@latest.ElementAt(3).Desciption </a>
+                                                        <p class="price"> @latest.ElementAt(3).price</p>
+                                                    </div>
+                                                </li>        
+                                                 
+                                            </ul>
+                                        </div>
+                              
+                                    <div class="item">
+                                        <ul class="thumbnails">
+
+
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{ url = "~/Files/" + latest.ElementAt(4).Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href="" class="title"> @latest.ElementAt(4).name</a><br />
+                                                    <a href=" " class="category">@latest.ElementAt(4).Desciption </a>
+                                                    <p class="price"> @latest.ElementAt(4).price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{ url = "~/Files/" + latest.ElementAt(5).Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @latest.ElementAt(5).name</a><br />
+                                                    <a href=" " class="category">@latest.ElementAt(5).Desciption </a>
+                                                    <p class="price"> @latest.ElementAt(5).price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{ url = "~/Files/" + latest.ElementAt(6).Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" /></a></p>
+                                                    <a href=" " class="title"> @latest.ElementAt(6).name</a><br />
+                                                    <a href=" " class="category">@latest.ElementAt(6).Desciption </a>
+                                                    <p class="price"> @latest.ElementAt(6).price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{ url = "~/Files/" + latest.ElementAt(7).Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @latest.ElementAt(7).name</a><br />
+                                                    <a href=" " class="category">@latest.ElementAt(7).Desciption </a>
+                                                    <p class="price"> @latest.ElementAt(7).price</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+                        </div>  
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="span12">
+                            <h4 class="title">
+                                <span class="pull-left"><span class="text"><span class="line">Popular <strong>Products</strong></span></span></span>
+                                <span class="pull-right">
+                                    <a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+                                </span>
+                            </h4>
+                            <div id="myCarousel-2" class="myCarousel carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="active item">
+                                        <ul class="thumbnails">
+                                            
+
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(0).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(0).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(0).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(0).Product.price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(1).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(1).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(1).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(1).Product.price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(2).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(2).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(2).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(2).Product.price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(3).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(3).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(3).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(3).Product.price</p>
+                                                </div>
+                                            </li>       
+
+                                        </ul>
+                                    </div>
+                                    <div class="item">
+                                        <ul class="thumbnails">                                           
+                                           
+                                                
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(4).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(4).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(4).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(4).Product.price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(5).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(5).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(5).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(5).Product.price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(6).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(6).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(6).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(6).Product.price</p>
+                                                </div>
+                                            </li>
+                                            <li class="span3">
+                                                <div class="product-box">
+                                                    @{  url = "~/Files/" + pop.ElementAt(7).Product.Id + "0" + ".jpg"; }
+                                                    <p><a href=" "><img src="@Url.Content(url)" alt=" " /></a></p>
+                                                    <a href=" " class="title"> @pop.ElementAt(7).Product.name</a><br />
+                                                    <a href=" " class="category">@pop.ElementAt(7).Product.Desciption </a>
+                                                    <p class="price"> @pop.ElementAt(7).Product.price</p>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    
+                    <div class="row feature_box">
+                        <div class="span4">
+                            <div class="service">
+                                <div class="responsive">
+                                    <img src="~/Content/others/feature_img_2.png" alt="" />
+                                    <h4>MODERN <strong>DESIGN</strong></h4>
+                                    <p>Fashion is a distinctive and often habitual trend in the style in which a person dresses</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="service">
+                                <div class="customize">
+                                    <img src="~/Content/others/feature_img_1.png" alt="" />
+                                    <h4>FREE <strong>SHIPPING</strong></h4>
+                                    <p>fashion is a distinctive and often habitual trend in the style in which a person dresses</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="service">
+                                <div class="support">
+                                    <img src="~/Content/others/feature_img_3.png" alt="" />
+
+                                    <h4>24/7 LIVE <strong>SUPPORT</strong></h4>
+                                    <p>fashion is a distinctive and often habitual trend in the style in which a person dresses</pfashion></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+        <section class="our_client">
+            <h4 class="title"><span class="text">Manufactures</span></h4>
+            <div class="row">
+
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/Content/clients/37.png" /></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/Content/clients/3.png" /></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/Content/clients/11.png" /></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/Content/clients/15.png" /></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/Content/clients/33.png" /></a>
+                </div>
+                <div class="span2">
+                    <a href="#"><img alt="" src="~/Content/clients/35.png" /></a>
+                </div>
+            </div>
+        </section>
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Navigation</h4>
+                    <ul class="nav">
+                        <li><a href="/Home/index">Homepage</a></li>                         
+                        <li><a href="/Home/contactus">Contac Us</a></li>
+                        
+                        @if(user != null)
+                        { 
+                        <li><a href="/Items/my_cart">Your Cart</a></li>
+                        }
+                        <li><a href="/Home/Register">Login</a></li>
+                    </ul>
+                </div>
+                 
+                <div class="span5">
+                    <p class="logo" style=" font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:orange">Shop  Wear</p>
+                    <p>Fashion is a popular style or practice, especially in clothing, footwear, accessories, makeup, body piercing, or furniture.</p>
+                    <br />
+                    <span class="social_icons">
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <section id="copyright">
+            <span>Copyright Mateen yaseen </span>
+        </section>
+    </div>
+    <script src="~/Content/common.js"></script>
+    <script src="~/Content/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                $('.flexslider').flexslider({
+                    animation: "fade",
+                    slideshowSpeed: 4000,
+                    animationSpeed: 600,
+                    controlNav: false,
+                    directionNav: true,
+                    controlsContainer: ".flex-container" // the container that holds the flexslider
+                });
+            });
+        });
+    </script>
+</body>
+</html>

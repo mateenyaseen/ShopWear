@@ -1,0 +1,347 @@
+﻿@{
+    ViewBag.Title = "contactus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
+}
+@model IEnumerable<project.Models.Product>
+ 
+
+@using project.Models
+@{     User user = (User)HttpContext.Current.Session["user"];
+     dynamic mysub = ViewBag.mysubcat;
+}
+@{List<Category> c = ViewBag.cat; List<Subcategory> sc = ViewBag.subcat; List<Brand> br = ViewBag.brand; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/themes/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+    <script src="~/Content/themes/jquery.fancybox.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+
+
+
+    <link href="~/Content/fancy%20box/source/helpers/jquery.fancybox-buttons.css" rel="stylesheet" />
+    <link href="~/Content/fancy%20box/source/helpers/jquery.fancybox-thumbs.css" rel="stylesheet" />
+    <link href="~/Content/fancy%20box/source/jquery.fancybox.css" rel="stylesheet" />
+    <script src="~/Content/fancy%20box/source/helpers/jquery.fancybox-buttons.js"></script>
+    <script src="~/Content/fancy%20box/source/helpers/jquery.fancybox-media.js"></script>
+    <script src="~/Content/fancy%20box/source/helpers/jquery.fancybox-thumbs.js"></script>
+    <script src="~/Content/fancy%20box/source/jquery.fancybox.js"></script>
+    <script src="~/Content/fancy%20box/source/jquery.fancybox.pack.js"></script>
+   
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div id="wrapper" class="container">
+
+        <section class="header_text sub">
+            <img class="pageBanner" src="~/Content/others/Sl1.jpg" alt="New products" />
+            <div><h3 style="color:#e90000"><span>----@ViewBag.pagetitle---- </span></h3></div>
+        </section>
+        <section class="main-content">
+            <div class="row">
+                <div class="span9" id="searchResult">
+
+                     @if (Model.Count() != 0)
+                    {
+
+                        <ul class="thumbnails listing-products">
+
+                            @foreach (Product p in Model)
+                            {
+
+
+                                <li class="span3">
+                                    <div class="product-box">
+                                        <span class="sale_tag"></span>
+
+
+
+                                        @{string url = "~/Files/" + p.Id + "0" + ".jpg"; }
+                                        <a class="fancybox-thumb" rel="@i" href="@Url.Content(url)" title="name:@p.name             Brand:@p.Brand.name        price:@p.price">
+                                            <img src="@Url.Content(url)" alt="" />
+                                        </a>
+                                        <div class="hidden">
+                                            @{  url = "~/Files/" + p.Id + "1" + ".jpg"; }
+                                            <a class="fancybox-thumb" rel="@i" href="@Url.Content(url)" title="name:@p.name         Brand:@p.Brand.name         price:@p.price">
+                                                <img src="@Url.Content(url)" alt="" />
+                                            </a>
+                                            @{  url = "~/Files/" + p.Id + "2" + ".jpg"; }
+                                            <a class="fancybox-thumb" rel="@i" href="@Url.Content(url)" title="name:@p.name         Brand:@p.Brand.name          price:@p.price">
+                                                <img src="@Url.Content(url)" alt="" />
+                                            </a>
+                                            @{  url = "~/Files/" + p.Id + "3" + ".jpg"; }
+                                            <a class="fancybox-thumb" rel="@i" href="@Url.Content(url)" title="name:@p.name           Brand:@p.Brand.name         price:@p.price">
+                                                <img src="@Url.Content(url)" alt="" />
+                                            </a>
+                                        </div>
+
+                                        <br />
+                                        <a href="" class="title">@p.name</a><br />
+                                        <a href="#" class="category">@p.Brand.name</a><br />
+                                        @if (user != null)
+                                        {
+                                           
+                                            @Html.ActionLink("Add to Cart", "product_detail", new { id = p.Id })
+                                        }
+
+                                        <p class="price">@p.price</p>
+
+                                    </div>
+                                </li>
+
+                                        i++;
+                            }
+
+
+
+
+                        </ul>
+
+
+
+                        
+
+                    }
+                    else
+                    {
+                        @:<h4>No product available! </h4>
+
+
+
+
+                    }
+                </div>
+
+
+
+
+
+                <div class="span3 col">
+                    <div class="block">
+
+                        <label class="nav-header" style="color:#e90000"><h4>Search</h4></label>
+                        <div class="box-content">
+
+                          <form method=" " action=" ">
+                              
+                              <div class="form-group" >
+                                  <label for="sel1">Select Category (select one):</label>
+                                  <select class="form-control" name="brandID" id="CategorySelector">
+                                      <option value="0">Select All</option>
+                                      @foreach (Category b in c)
+                                      {
+                                          <option value=@b.Id>@b.name</option>
+                                      }
+                                     
+
+                                  </select>
+                              </div>
+
+                              <div class="form-group" id="d1" >
+                                  <label for="sel1">Select Subcategory (select one):</label>
+                                  <select class="form-control" id="SubCategorySelector">
+                                      <option value="0">Select All</option>
+                                      @foreach (Subcategory temp in sc)
+                                      {
+                                          if (temp.categoryId == c[0].Id)
+                                          {
+                                              <option value=@temp.Id>@temp.name</option>
+                                          }
+                                      }
+
+
+                                  </select>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="sel1">Select Brand (select one):</label>
+                                  <select class="form-control" name="brandID" id="BrandSelector">
+                                      <option value="0">Select All</option>
+                                      @foreach (Brand b in br)
+                                      {
+                                          <option value=@b.Id>@b.name</option>
+                                      }
+
+                                  </select>
+
+                              </div>
+
+                                <div class="form-group">
+                                    <label for="sel1">Enter value :</label>                                    
+                                    <input type="text" id="details" name="search" class="form-control" placeholder="Title" required>
+                                    
+                                </div>
+                                <input tabindex="9" class="btn btn-inverse large" type="button" id="doit" onclick="my()" value="Search">
+                            </form>
+                        </div>
+                        
+                            <ul class="nav nav-list">
+                            <li class="nav-header" style="color:#e90000; "><h3>Categories</h3><br /></li>
+                            @foreach(Category g in c)
+                            { 
+                               
+                            <li>
+                                <h4>
+                                    @{string url = "~/Items/ShowCategory/" + g.Id ; }
+
+                                    <a class="Action" href="@Url.Content(url)"> @g.name</a> 
+
+                                </h4>
+                            </li>
+                            }
+
+                        </ul>
+
+                        <ul class="nav nav-list">
+                            <li class="nav-header" style="color:#e90000; "><h3>Brands</h3><br /></li>
+                            @foreach (Brand g in br)
+                            {
+                                <li>
+                                    <h4>
+                                        @{string url = "~/Items/ShowBrand/" + g.Id; }
+
+                                        <a class="Action" href="@Url.Content(url)"> @g.name</a>
+
+                                    </h4>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+       
+        <section id="footer-bar">
+            <div class="row">
+                <div class="span3">
+                    <h4>Navigation</h4>
+                    <ul class="nav">
+                        <li><a href="/Home/index">Homepage</a></li>
+                        <li><a href="/Home/contactus">Contac Us</a></li>
+
+                        @if (user != null)
+                        {
+                            <li><a href="/Items/my_cart">Your Cart</a></li>
+                        }
+                        <li><a href="/Home/Register">Login</a></li>
+                    </ul>
+                </div>
+
+                <div class="span5">
+                    <p class="logo" style=" font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:orange">Shop  Wear</p>
+                    <p>Fashion is a popular style or practice, especially in clothing, footwear, accessories, makeup, body piercing, or furniture.</p>
+                    <br />
+                    <span class="social_icons">
+                        <a class="facebook" href="#">Facebook</a>
+                        <a class="twitter" href="#">Twitter</a>
+                        <a class="skype" href="#">Skype</a>
+                        <a class="vimeo" href="#">Vimeo</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section id="copyright">
+            <span>Copyright Mateen yaseen.</span>
+        </section>
+    </div>
+
+    <script src="~/Content/common.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".fancybox")
+        .attr('rel', 'gallery')
+        .fancybox({
+            padding: 0
+        })
+    });
+
+    $(document).ready(function () {
+        $(".fancybox-thumb").fancybox({
+            prevEffect: 'none',
+            nextEffect: 'none',
+            helpers: {
+                title: {
+                    type: 'outside'
+                },
+                thumbs: {
+                    width: 50,
+                    height: 50
+                }
+            }
+        });
+    });
+    </script>
+
+    <script>
+
+        $('#CategorySelector').change(function () {
+            var value = $('#CategorySelector').val();
+
+            $('#d1').load('/Items/category?cat=' + value);
+        });
+
+    </script>
+<script>
+    function my() {
+        var brand = $("#BrandSelector").val();
+        var Cat = $("#CategorySelector").val();
+        var Sub = $("#SubCategorySelector").val();
+        var detail = $("#details").val()
+        
+
+        $.post("/Items/DoSearch", { brand: brand, Cat: Cat, Sub: Sub, mydata: detail },
+            function (data) {
+                $("#searchResult").empty().append(data);
+            });
+    }
+</script>
+
+
+    
+
+</body>
+
+
+
+
+</html>

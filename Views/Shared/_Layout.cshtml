@@ -1,0 +1,179 @@
+﻿@using project.Models
+@{     User user = (User)HttpContext.Current.Session["user"]; }
+@{List<Category> c = ViewBag.cat; List<Subcategory> sc = ViewBag.subcat; List<Brand> br = ViewBag.brand; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+
+
+    <script src="~/Content/fancy%20box/lib/jquery-1.9.0.min.js"></script>
+
+
+    
+
+     
+
+
+
+
+    <!-- Modernizr -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body style="background:url('../../Content/bg.png'); background-repeat:repeat;">
+
+    <div id="top-bar" class="container">
+        <div class="row">
+            <div class="span4">
+                <form method="POST" class="search_form" action="/Home/search">
+                    <input type="text"name="search" class="input-block-level search-query"style="color:black;" placeholder="eg. T-sirt"/>                     
+                    <button type="submit"class="btn btn-default" style="margin-left:40%;  background-color:white;" value="Search" />
+                                                                                  
+                </form>
+            </div>
+
+            <div class="span8">
+                <div class="account pull-right">
+                    <ul class="user-menu"></ul>
+
+                    <ul class="user-menu">
+                         
+                        @if(user != null)
+                        {
+                            if (user.type.Trim().Equals("Admin") || user.type.Trim().Equals("MasterAdmin"))
+                        {
+                        
+                        <li><a href="/Admin/index"><strong>Admin Panel</strong></a></li>
+                        }
+                        }
+                        @if(user != null)
+                        {
+                        <li><a href="/Items/my_cart"><strong>My Cart</strong></a></li>
+                        <li><a href="/Home/checkout"><strong>Check Out</strong></a></li>
+                        }
+                         @if(user==null){
+                            @:<li><a href="/Home/Register" class="cd-signup"><strong>Sign up</strong></a></li>
+                             <li><a href="/Home/Register" style=" padding:15px;"><img src="~/Content/others/lock.png" class="cd-signin" /><strong> login </strong> </a></li>
+                        }
+                         else
+                         {
+                            @:<li><a href="/Home/Logout" class="cd-signup"><strong>Logout</strong></a></li>
+                         }
+                          
+                       
+                   
+                         </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper" class="container">
+        <section class="navbar main-menu">
+            <div class="navbar-inner main-menu" style="font-size:3px">
+                <a href="/Home/index" class="logo pull-left" style="font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin-top:1%;"><strong>Shop Wear</strong></a>
+                <nav id="menu" class="pull-right">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="/Home/index">Home</a>
+
+                        </li>
+
+                        <li>
+                            <a href=" ">Category</a>
+                            <ul>
+
+                                @foreach (Category temp in c)
+                                {
+                                    <li >
+                                        @{string url = "~/Items/ShowCategory/" + temp.Id; }
+
+                                        <a href="@Url.Content(url)"> @temp.name</a>
+
+                                        <ul class="dropdown-menu-left">
+
+                                            @foreach (Subcategory temp2 in sc)
+                                            {
+                                                if (temp2.categoryId == temp.Id)
+                                                {
+                                                    string url2 = "~/Items/ShowSubCategory/" + temp2.Id;
+                                                    <li ><a href="@Url.Content(url2)"> @temp2.name </a></li>
+                                                }
+
+                                            }
+
+
+                                        </ul>
+                                    </li>
+                                }
+
+
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a href="/Items/MenClothes">Brand</a>
+
+                            <ul>
+
+                                @foreach (Brand temp in br)
+                                {
+                                    <li>
+                                        @{string url = "~/Items/ShowBrand/" + temp.Id; }
+
+                                        <a href="@Url.Content(url)">@temp.name</a>
+
+                                    </li>
+                                }
+
+
+                            </ul>
+
+                        </li>
+
+
+                        <li><a href="/Home/contactus">Contact</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    @RenderBody();
+
+    <script src="themes/js/common.js"></script>
+
+   
+</body>
+</html>

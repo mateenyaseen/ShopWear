@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using project.Models
+@{     User user = (User)HttpContext.Current.Session["user"]; }
+@{List<Category> c = ViewBag.cat; List<Subcategory> sc = ViewBag.subcat; List<Brand> br = ViewBag.brand; }
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/themes/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+    <script src="~/Content/themes/jquery.fancybox.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div id="wrapper" class="container">
+         
+            <section class="header_text sub">
+                <img class="pageBanner" src="~/Content/others/Sl1.jpg" alt="New products" />
+
+                <br /><br />
+                <h4 style="font-size:30px"><span>Search product</span></h4>
+                <br />
+            </section>
+            <section class="main-content">
+
+
+                <div class="row">
+                    <div class="span9">
+
+
+
+                        @if (Model.Count != 0)
+                        {
+                            <ul class="thumbnails listing-products">
+
+                                @foreach (Product p in Model)
+                                {
+
+
+                                    <li class="span3">
+                                        <div class="product-box">
+                                            <span class="sale_tag"></span>
+                                            @{string url = "~/Files/" + p.Id + ".jpg"; }
+                                            <a href=" "><img alt="" src="@Url.Content(url)"></a><br />
+                                            <a href="" class="title">@p.name</a><br />
+                                            <a href="#" class="category">@p.Brand.name</a><br />
+                                            @if (user != null)
+                                            {
+                                                @Html.ActionLink("Add to Cart", "product_detail", new { id = p.Id })
+                                            }
+
+                                            <p class="price">@p.price</p>
+
+                                        </div>
+                                    </li>
+
+
+                                }
+
+
+                            </ul>
+
+
+
+                            <hr>
+                            <div class="pagination pagination-small pagination-centered">
+                                <ul>
+                                    <li><a href="#">Prev</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">Next</a></li>
+                                </ul>
+                            </div>
+
+                        }
+                        else
+                        {
+                            @:<h4>No product found! </h4>
+
+
+
+
+
+
+
+
+                        }
+                    </div>
+                    <div class="span3 col">
+                        <div class="block">
+                            <div class="box-content">
+                                <form method="post" action="/Admin/Searchproduct">
+                                    <div class="form-group">
+                                        <label>Search</label>
+                                        <input type="text" name="search" class="form-control" placeholder="Title" required>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-default">Search</button>
+                                </form>
+                            </div><ul class="nav nav-list">
+                                <li class="nav-header" style="color:#e90000"><h3>CATEGORIES</h3><br /></li>
+                                @foreach (Category g in c)
+                                {
+                                    <li>
+                                        <h4>
+                                            @{string url = "~/Items/ShowCategory/" + g.Id; }
+
+                                            <a class="Action" href="@Url.Content(url)"> @g.name</a>
+
+                                        </h4>
+                                    </li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <section id="footer-bar">
+                <div class="row">
+                    <div class="span3">
+                        <h4>Navigation</h4>
+                        <ul class="nav">
+                            <li><a href="./index.html">Homepage</a></li>
+                            <li><a href="./about.html">About Us</a></li>
+                            <li><a href="./contact.html">Contac Us</a></li>
+                            <li><a href="./cart.html">Your Cart</a></li>
+                            <li><a href="./register.html">Login</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="span5">
+                        <p class="logo" style=" font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:orange">Shop  Wear</p>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+                        <br />
+                        <span class="social_icons">
+                            <a class="facebook" href="#">Facebook</a>
+                            <a class="twitter" href="#">Twitter</a>
+                            <a class="skype" href="#">Skype</a>
+                            <a class="vimeo" href="#">Vimeo</a>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <section id="copyright">
+                <span>Copyright 2013 Mateen yaseen.</span>
+            </section>
+        </div>
+
+    <script src="~/Content/common.js"></script>
+</body>
+</html>

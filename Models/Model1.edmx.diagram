@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6722c6eaa0fd43b291c057545817f462" Name="Diagram1">
+        <EntityTypeShape EntityType="StroreModel.Brand" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="StroreModel.Category" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="StroreModel.Contactu" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StroreModel.Order" Width="1.5" PointX="5.25" PointY="2" />
+        <EntityTypeShape EntityType="StroreModel.Popular" Width="1.5" PointX="7.5" PointY="9.375" />
+        <EntityTypeShape EntityType="StroreModel.Product" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="StroreModel.PurchaseProduct" Width="1.5" PointX="7.5" PointY="6" />
+        <EntityTypeShape EntityType="StroreModel.Subcategory" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="StroreModel.User" Width="1.5" PointX="3" PointY="2.125" />
+        <AssociationConnector Association="StroreModel.FK_Products_brand" />
+        <AssociationConnector Association="StroreModel.FK_Products_categort" />
+        <AssociationConnector Association="StroreModel.FK_Subcategory_ToTable" />
+        <AssociationConnector Association="StroreModel.fk_PerOrders" />
+        <AssociationConnector Association="StroreModel.FK_PurchaseProduct_ToOrder" />
+        <AssociationConnector Association="StroreModel.FK_popular_ToTable" />
+        <AssociationConnector Association="StroreModel.FK_Products_sub" />
+        <AssociationConnector Association="StroreModel.FK_PurchaseProduct_product" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

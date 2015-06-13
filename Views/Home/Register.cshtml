@@ -1,0 +1,204 @@
+﻿@{
+    ViewBag.Title = "contactus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using project.Models
+ @{     User user = (User)HttpContext.Current.Session["user"]; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap E-commerce Templates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrappage.css" rel="stylesheet" />
+
+
+    <!-- global styles -->
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/themes/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+
+
+    <!-- scripts -->
+    <script src="~/Content/jquery-1.7.2.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
+
+    <script src="~/Content/superfish.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+    <script src="~/Content/themes/jquery.fancybox.js"></script>
+    <script src="~/Content/jquery.scrolltotop.js"></script>
+
+
+  
+     
+   
+
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+ 
+
+        </head>
+        <body>
+
+            <div id="wrapper" class="container">
+
+                <section class="header_text sub">
+                    <h4><span>Login or Regsiter</span></h4>
+                </section>
+                <section class="main-content">
+                    <div class="row">
+                        <div class="span5">
+                            <h4 class="title"><span class="text"><strong>Sign</strong> In</span></h4>
+                            <form action="/Home/SigninforUser" method="post">
+                                <input type="hidden" name="next" value="/">
+                                <fieldset>
+                            @if (ViewBag.login == "success")
+                            {
+                                <h4 style="color:green"> Login Successfully! </h4>
+                            }
+                            @if (ViewBag.login == "fail")
+                            {
+                                <h4 style="color:red"> Login Failed</h4>
+                            }
+        <div class="control-group">
+            <label class="control-label"><strong>Username</strong></label>
+            <div class="controls">
+                <input type="text" placeholder="Enter your username"  name="username" class="input-xlarge" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"><strong>Password</strong></label>
+            <div class="controls">
+                <input type="password" placeholder="Enter your password" id="password" name="password" class="input-xlarge" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <input tabindex="3" class="btn btn-inverse large" type="submit" value="Sign into your account">
+            <hr>
+            <p class="reset">Recover your <a tabindex="4" href="#" title="Recover your username or password">username or password</a></p>
+        </div>
+    </fieldset>
+</form>
+</div>
+<div class="span7">
+    <h4 class="title"><span class="text"><strong>Sign</strong> Up</span></h4>
+    <form action="/Home/SignupforUser" method="post" class="form-stacked">
+        <fieldset>
+       
+            <div id="mydiv"></div>
+         
+
+        <div class="control-group">
+            <label class="control-label"><strong>Username</strong></label>
+            <div class="controls">
+                <input type="text" placeholder="Enter your username" id="signup-username" name="username" class="input-xlarge" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"><strong>email address:</strong> </label>
+            <div class="controls">
+                <input type="text" placeholder="Enter your email" id="mail" name="email" class="input-xlarge" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"><strong>Password:</strong></label>
+            <div class="controls">
+                <input type="password" placeholder="Enter your password" name="password" class="input-xlarge" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <p>make sure you have read all of terms and conditions</p>
+        </div>
+        <hr>
+        <div class="actions">
+            <input tabindex="9" class="btn btn-inverse large" type="submit" onclick="return validation()" value="Create your account">
+
+        </div>
+
+    </fieldset>
+</form>
+</div>
+</div>
+</section>
+
+<section id="footer-bar">
+    <div class="row">
+        <div class="span3">
+            <h4>Navigation</h4>
+            <ul class="nav">
+                <li><a href="/Home/index">Homepage</a></li>
+                <li><a href="/Home/contactus">Contac Us</a></li>
+
+                        @if (user != null)
+                        {
+                            <li><a href="/Items/my_cart">Your Cart</a></li>
+                        }
+        <li><a href="/Home/Register">Login</a></li>
+    </ul>
+</div>
+
+<div class="span5">
+    <p class="logo" style=" font-size:35px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:orange">Shop  Wear</p>
+    <p>Fashion is a popular style or practice, especially in clothing, footwear, accessories, makeup, body piercing, or furniture.</p>
+    <br />
+    <span class="social_icons">
+        <a class="facebook" href="#">Facebook</a>
+        <a class="twitter" href="#">Twitter</a>
+        <a class="skype" href="#">Skype</a>
+        <a class="vimeo" href="#">Vimeo</a>
+    </span>
+</div>
+</div>
+</section>
+
+<section id="copyright">
+    <span>Copyright 2013 bootstrappage template  All right reserved.</span>
+</section>
+</div>
+ 
+
+    <script>
+        $(document).ready(function () {
+            $('#checkout').click(function (e) {
+                document.location.href = "checkout.html";
+            })
+        });
+    </script>
+
+    <script>
+        function validation() {
+            var s = document.getElementById('mail').value;
+
+            if ((s.indexOf('@@') < 0) || s.lastIndexOf('.') < 0 || (s.lastIndexOf('.') - s.lastIndexOf('@@') < 2)) {
+                alert("Enter valid email");
+                return false;
+            }
+            return true;
+
+        }
+    </script>
+
+   <script>
+
+    $('#signup-username').keyup(function () {
+
+        var value = $('#signup-username').val();
+
+        $('#mydiv').load('/Home/userforcheck?cat=' + value);
+
+    });
+
+   </script>
+
+   <script src="~/Content/common.js"></script>
+</body>
+</html>

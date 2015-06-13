@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "View1";
+    Layout = null;
+}
+@using project.Models
+
+ 
+    <label for="sel1">Select Subcategory (select one):</label>
+    <select class="form-control" id="SubCategorySelector"   >
+    <option value="0">Select All</option>
+    @foreach (Subcategory temp in Model)
+    {
+        <option value=@temp.Id>@temp.name</option>
+    }
+
+
+</select>
+
+
+
+ 
+
