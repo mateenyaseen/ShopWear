@@ -1,15 +1,17 @@
 ﻿@{
-    ViewBag.Title = "checkout";
+    ViewBag.Title = "History";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @using project.Models
-@{     User user = (User)HttpContext.Current.Session["user"]; }
+@{     User user = (User)HttpContext.Current.Session["user"];
+       int i = 1; }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -27,7 +29,7 @@
 
     <!-- scripts -->
     <script src="~/Content/jquery-1.7.2.min.js"></script>
-    
+
 
     <script src="~/Content/superfish.js"></script>
     <script src="~/Content/jquery.scrolltotop.js"></script>
@@ -51,45 +53,61 @@
 
     <div id="wrapper" class="container">
 
-        <section class="header_text sub">
-            
-            <h4><span>Check Out</span></h4>
-        </section>
-        <section class="main-content">
-            <div class="row">
-                <div class="span12">
-                    <div class="accordion" id="accordion2">
+         
+
+        <div class="row">
+            <div class="box col-md-12">
+                <div class="box-inner">
+                    <div class="box-header well" data-original-title="" style="width:80%;margin-left:2%;">
+                        <h2><i class="glyphicon glyphicon-user"></i>Order</h2>
+
+                    </div>
+                    <div class="box-content" style="width:80%;margin-left:2%;">
+                        <table class="table table-striped table-bordered bootstrap-datatable datatable responsive"  >
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>customer name</th>
+                                    <th>Date</th>
+                                    <th>Total Amount</th>
+                                    <th>Comment</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
 
-                        <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">Confirm Order</a>
-                            </div>
-                            <div id="collapse3" class="accordion-body collapse">
-                                <div class="accordion-inner">
-                                    <div class="row-fluid">
-                                        @using (Html.BeginForm("confirmorder", "Home", FormMethod.Post))
-                                        {
-                                            
-                                        <div class="control-group">
-                                        
 
-                                            <label for="textarea" class="control-label">Comments</label>
-                                            <div class="controls">
-                                                <textarea name="com" rows="3" id="textarea" class="span12"></textarea>
-                                            </div>
-                                        
-                                        </div>
-                                        <button class="btn btn-inverse pull-right">Confirm order</button>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                @foreach (Order o in Model)
+                                {
+
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@o.User.username</td>
+                                        <td>@o.Date</td>
+                                        <td>@o.total</td>
+                                        <td>@o.comments</td>
+
+
+                                        <td>
+
+                                           
+                                                @Html.ActionLink("View Order Detail", "vieworderdetail", new { id = o.Id }, new { @class = "btn btn-inverse large" })
+                                          
+
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </section>
+            <!--/span-->
+        </div><!--/row-->
+        
         <section id="footer-bar">
             <div class="row">
                 <div class="span3">
